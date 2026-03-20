@@ -1,10 +1,16 @@
 import logo from "../assets/images/logo.png";
-import { Link , useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect , useState } from "react";
+import { Link , useLocation, useNavigate } from "react-router-dom";
+
 function Header(){
-    const location = useLocation();
+    const navigate = useNavigate(); 
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    const isLoginPage = location.pathname === "/login";
+    const handleLogout = () => {
+        localStorage.setItem("isLoggedIn" , "false");
+        navigate("/login");
+        window.location.reload();
+    }
+
     return(
         <>
             <header className="bg-[#fff7fdad] fixed left-0 right-0 top-0 z-[50]">
@@ -13,9 +19,24 @@ function Header(){
                         <img src={logo} className="max-w-[120px]"/>
                     </div>
                     <nav className="ms-auto lg:flex items-center gap-3">
-                        { isLoggedIn && <Link className="nav-link block py-3 font-medium">Sign Up</Link>}
-                        { !isLoggedIn || !isLoginPage && <Link to="/login" className="nav-link block py-3 font-medium">Login</Link>}
-                        { isLoggedIn || !isLoginPage && <Link to="/" className="nav-link block py-3 font-medium">Log Out</Link>}
+                       
+                        {!isLoggedIn && (
+                            <>
+                            <Link to="/signup">Sign Up</Link>
+                            
+                            {
+                                location.pathname !== "/login" && (
+                                    <Link to="/login">Login</Link>
+                                )
+                            }
+                            
+                            </>
+                        )}
+
+                        
+                        {isLoggedIn && (
+                            <button onClick={handleLogout}>Logout</button>
+                        )}
                     </nav>
                 </div>
                 <div className="bg-[#ffb38c]">
