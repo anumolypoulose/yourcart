@@ -13,7 +13,7 @@ function Header(){
 
     return(
         <>
-            <header className="bg-[#fff7fdad] fixed left-0 right-0 top-0 z-[50]">
+            <header className="bg-[#fff] sticky left-0 right-0 top-0 z-[50]">
                 <div className="max-w-5xl lg:max-w-7xl px-6 flex items-center space-between mx-auto py-3">
                     <div className="">
                         <img src={logo} className="max-w-[120px]"/>
@@ -35,7 +35,7 @@ function Header(){
 
                         
                         {isLoggedIn && (
-                            <button onClick={handleLogout}>Logout</button>
+                            <button onClick={handleLogout}>Log out</button>
                         )}
                     </nav>
                 </div>
