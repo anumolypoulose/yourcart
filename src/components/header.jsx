@@ -35,7 +35,15 @@ function Header(){
 
                         
                         {isLoggedIn && (
-                            <button onClick={handleLogout}>Log out</button>
+                            <>
+                            <button className="me-2">
+                                <span className="material-icons-outlined text-[#ff0000]">favorite</span>
+                            </button>
+                            <button className="me-2">
+                                <span className="material-icons-outlined text-[#1e437a]">shopping_cart</span>
+                            </button>
+                            <button onClick={handleLogout}><span className="material-icons-outlined">logout</span></button>
+                            </>
                         )}
                     </nav>
                 </div>

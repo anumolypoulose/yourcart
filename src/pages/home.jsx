@@ -19,10 +19,10 @@ function home(){
     return(
         <>
             <div className="relative">
-                <img src={shop2} className="w-full h-[390px] object-cover object-center"/>
+                <img src={shop2} className="w-full h-[380px] object-cover object-center"/>
             </div>
-            <div className="max-w-5xl p-[15px] mx-auto my-[30px]">
-                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[20px]">
+            <div className="max-w-5xl lg:max-w-7xl px-6 py-[15px] mx-auto my-[30px]">
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[15px]">
                     {productItems.map((item) => (
                         <Productcard key={item.id} product={item} />
                     ))}
